@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Купити вазон - Plantify</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-page {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 20px;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .product-image-section {
+            flex: 1;
+            text-align: center;
+        }
+
+        .product-image-section img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-info-section {
+            flex: 1;
+        }
+
+        .product-info-section h1 {
+            color: #0b4d3c;
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666666;
+            margin-bottom: 30px;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            border: none;
+            background: #0b4d3c;
+            color: #ffffff;
+            padding: 20px 60px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #083b2e;
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0b4d3c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 860px) {
+            .product-page {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .product-info-section h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="product-page">
+        <div class="product-image-section">
+            <a href="index.html" class="back-link">← Назад до каталогу</a>
+            <img id="product-img" src="" alt="Завантаження...">
+        </div>
+
+        <div class="product-info-section">
+            <h1 id="product-name">Завантаження...</h1>
+            <div class="product-price" id="product-price">$0</div>
+
+            <p class="description">
+                Цей чудовий вазон стане ідеальним доповненням до вашого інтер'єру.
+                Він невибагливий у догляді, любить помірне світло та приносить затишок у дім.
+            </p>
+
+            <button class="add-to-cart-btn" onclick="confirmPurchase()">Додати в кошик та купити</button>
+        </div>
+    </div>
+
+    <script>
+        const catalog = {
+            "peperomia": { name: "Peperomia Ginny", price: 25, img: "Знімок екрана 2026-04-15 215648.png" },
+            "fern": { name: "Bird's Nest Fern", price: 45, img: "Знімок екрана 2026-04-15 215633.png" },
+            "palm": { name: "Large Majesty Palm", price: 52, img: "Знімок екрана 2026-04-15 215640.png" },
+            "pet-friendly": { name: "Pet Friendly Plant", price: 30, img: "image 2.png" },
+            "snake": { name: "Snake Plant", price: 35, img: "image 3.png" },
+            "monstera": { name: "Monstera Deliciosa", price: 60, img: "image 11.png" }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get("id");
+        const plant = catalog[productId];
+
+        if (plant) {
+            document.getElementById("product-name").innerText = plant.name;
+            document.getElementById("product-price").innerText = "$" + plant.price;
+            document.getElementById("product-img").src = plant.img;
+            document.getElementById("product-img").alt = plant.name;
+        } else {
+            document.getElementById("product-name").innerText = "Товар не знайдено";
+            document.querySelector(".description").innerText = "На жаль, ми не знайшли інформацію про цей вазон. Спробуйте повернутися в каталог.";
+        }
+
+        function confirmPurchase() {
+            if (!plant) return;
+
+            const cart = JSON.parse(localStorage.getItem("plantifyCart")) || [];
+            cart.push({
+                id: productId,
+                name: plant.name,
+                price: plant.price
+            });
+
+            localStorage.setItem("plantifyCart", JSON.stringify(cart));
+            alert(plant.name + " додано до кошика!");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

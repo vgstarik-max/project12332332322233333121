@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Plants — Натхнення</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .explore-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        .explore-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .explore-header h1 {
+            color: #0b4d3c;
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        .plant-story-card {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .plant-story-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .plant-story-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .story-img {
+            flex: 1;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .story-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .story-text {
+            flex: 1;
+        }
+        .story-text h2 {
+            color: #0b4d3c;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .story-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            font-style: italic;
+        }
+        .back-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #0b4d3c;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-home">← На головну</a>
+
+    <div class="explore-container">
+        <div class="explore-header">
+            <h1>Botanical Stories</h1>
+            <p>Відкрийте для себе магію кожного листка</p>
+        </div>
+
+        <div class="plant-story-card">
+            <div class="story-img">
+                <img src="image 3.png" alt="Monstera">
+            </div>
+            <div class="story-text">
+                <h2>Monstera: Королева Джунглів</h2>
+                <p>"Її листя — це природні витинанки. Монстера не просто рослина, це символ дикої свободи. У тропіках вона піднімається до самого неба, ловлячи кожну краплю дощу своїми велетенськими долонями."</p>
+            </div>
+        </div>
+
+        <div class="plant-story-card">
+            <div class="story-img">
+                <img src="image 2.png" alt="Snake Plant">
+            </div>
+            <div class="story-text">
+                <h2>Snake Plant: Нічний Вартовий</h2>
+                <p>"Вона мовчазна і незламна. Поки ви спите, ця рослина працює, очищуючи ваше повітря від тривог та пилу. Її гострі листки нагадують мечі, що стоять на сторожі вашого затишку."</p>
+            </div>
+        </div>
+
+        <div class="plant-story-card">
+            <div class="story-img">
+                <img src="Знімок екрана 2026-04-15 215633.png" alt="Fern">
+            </div>
+            <div class="story-text">
+                <h2>Bird's Nest Fern: Смарагдове Гніздо</h2>
+                <p>"Папороть, що зберігає таємниці стародавніх лісів. Її хвилясте листя розгортається повільно, наче старий сувій із закляттями. Вона любить туман і напівтемряву, створюючи атмосферу містичного саду."</p>
+            </div>
+        </div>
+
+        <div class="plant-story-card">
+            <div class="story-img">
+                <img src="Знімок екрана 2026-04-15 215640.png" alt="Palm">
+            </div>
+            <div class="story-text">
+                <h2>Majesty Palm: Дихання Океану</h2>
+                <p>"Навіть посеред міста вона нагадує про шум хвиль та гарячий пісок. Кожен помах її гілок — це легкий морський бриз, що залетів у ваше вікно, щоб нагадати про наступну відпустку."</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.plant-story-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

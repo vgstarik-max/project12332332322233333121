@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantify Garden - Магазин вазонів</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="nav-left">
+            <a href="#">Shop</a>
+            <a href="#">Products <span class="nav-caret">▼</span></a>
+            <a href="#">Fertilizer</a>
+            <a href="#">Guide</a>
+        </nav>
+
+        <div class="logo">
+            <img src="Black & White Geometric Beauty Circle Logo 1.png" alt="Plantify Garden">
+        </div>
+
+        <div class="nav-right">
+            <button class="icon-btn search-toggle" type="button" aria-label="Search">
+                <span class="header-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                        <circle cx="11" cy="11" r="6.5"></circle>
+                        <path d="M16 16L21 21"></path>
+                    </svg>
+                </span>
+            </button>
+
+            <button class="icon-btn account-toggle" type="button" aria-label="Account">
+                <span class="header-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                        <circle cx="12" cy="8" r="3.5"></circle>
+                        <path d="M5 20c0-3.3 2.9-6 7-6s7 2.7 7 6"></path>
+                    </svg>
+                </span>
+            </button>
+
+            <button class="icon-btn cart-toggle" type="button" onclick="toggleCart()" aria-label="Cart">
+                <span class="header-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M3 5h2l2.3 10.2a1 1 0 0 0 1 .8h9.9a1 1 0 0 0 1-.8L21 8H8"></path>
+                        <circle cx="10" cy="19.2" r="1.2"></circle>
+                        <circle cx="17.2" cy="19.2" r="1.2"></circle>
+                    </svg>
+                </span>
+                <span id="cart-count">0</span>
+            </button>
+
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Пошук вазонів..." onkeyup="liveSearch()" autocomplete="off">
+                <div id="searchSuggestions" class="search-suggestions"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Happiness blooms from within</h1>
+                <p>
+                    Our environment, the world in which we live and work,
+                    is a mirror of our attitudes and expectations.
+                </p>
+
+                <div class="hero-btns">
+                    <a href="#catalog" class="btn-shop">Shop now</a>
+                    <a href="explore.html" class="btn-explore">Explore plants <span>→</span></a>
+                </div>
+            </div>
+
+            <div class="hero-gallery">
+                <div class="gallery-dots" aria-hidden="true"></div>
+
+                <div class="side-column">
+                    <article class="hero-card hero-card-small">
+                        <span class="badge">New</span>
+                        <img src="image 2.png" alt="Green potted plant">
+                    </article>
+
+                    <article class="hero-card hero-card-small">
+                        <span class="badge">Popular</span>
+                        <img src="image 3.png" alt="Small cactus in white cup">
+                    </article>
+                </div>
+
+                <article class="hero-card hero-card-featured">
+                    <span class="badge">Featured</span>
+                    <img src="image 1.png" alt="Pink flowers bouquet">
+
+                    <div class="featured-content">
+                        <h2>Anthurium Flower</h2>
+                        <p>
+                            The flower of human being, it has meaningful of fact that the plant
+                            always grow whatever season and weather.
+                        </p>
+                        <a href="#catalog" class="read-more-btn">Read more</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured" id="catalog">
+        <div class="container">
+            <div class="featured-header">
+                <h2></h2>
+
+                <div class="slider-wrapper">
+                    <button class="arrow prev-arrow" id="prevBtn">&#10229;</button>
+
+                    <div class="product-slider" id="productSlider">
+                        <div class="product-card" onclick="goToProduct('peperomia')">
+                            <div class="img-container">
+                                <img src="Знімок екрана 2026-04-15 215648.png" alt="Peperomia">
+                            </div>
+                            <div class="product-info">
+                                <div class="name-price">
+                                    <h3>Peperomia Ginny</h3>
+                                    <span>$25</span>
+                                </div>
+                                <p class="pot-label">Pot color</p>
+                                <div class="card-footer">
+                                    <div class="colors">
+                                        <span class="dot dark"></span>
+                                        <span class="dot pink"></span>
+                                        <span class="dot light"></span>
+                                        <span class="dot brown"></span>
+                                    </div>
+                                    <button class="buy-btn">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" onclick="goToProduct('fern')">
+                            <div class="img-container">
+                                <img src="Знімок екрана 2026-04-15 215633.png" alt="Fern">
+                            </div>
+                            <div class="product-info">
+                                <div class="name-price">
+                                    <h3>Bird's Nest Fern</h3>
+                                    <span>$45</span>
+                                </div>
+                                <p class="pot-label">Pot color</p>
+                                <div class="card-footer">
+                                    <div class="colors">
+                                        <span class="dot dark"></span>
+                                        <span class="dot pink"></span>
+                                    </div>
+                                    <button class="buy-btn outline">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" onclick="goToProduct('palm')">
+                            <div class="img-container">
+                                <img src="Знімок екрана 2026-04-15 215640.png" alt="Palm">
+                            </div>
+                            <div class="product-info">
+                                <div class="name-price">
+                                    <h3>Large Majesty Palm</h3>
+                                    <span>$52</span>
+                                </div>
+                                <p class="pot-label">Pot color</p>
+                                <div class="card-footer">
+                                    <div class="colors">
+                                        <span class="dot dark"></span>
+                                        <span class="dot brown"></span>
+                                    </div>
+                                    <button class="buy-btn outline">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" onclick="goToProduct('pet-friendly')">
+                            <div class="img-container">
+                                <img src="image 2.png" alt="Pet Friendly Plant">
+                            </div>
+                            <div class="product-info">
+                                <div class="name-price">
+                                    <h3>Pet Friendly Plant</h3>
+                                    <span>$30</span>
+                                </div>
+                                <p class="pot-label">Pot color</p>
+                                <div class="card-footer">
+                                    <div class="colors">
+                                        <span class="dot pink"></span>
+                                        <span class="dot light"></span>
+                                    </div>
+                                    <button class="buy-btn outline">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" onclick="goToProduct('snake')">
+                            <div class="img-container">
+                                <img src="image 3.png" alt="Snake Plant">
+                            </div>
+                            <div class="product-info">
+                                <div class="name-price">
+                                    <h3>Snake Plant</h3>
+                                    <span>$35</span>
+                                </div>
+                                <p class="pot-label">Pot color</p>
+                                <div class="card-footer">
+                                    <div class="colors">
+                                        <span class="dot dark"></span>
+                                        <span class="dot pink"></span>
+                                    </div>
+                                    <button class="buy-btn outline">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" onclick="goToProduct('monstera')">
+                            <div class="img-container">
+                                <img src="image 11.png" alt="Monstera">
+                            </div>
+                            <div class="product-info">
+                                <div class="name-price">
+                                    <h3>Monstera Deliciosa</h3>
+                                    <span>$60</span>
+                                </div>
+                                <p class="pot-label">Pot color</p>
+                                <div class="card-footer">
+                                    <div class="colors">
+                                        <span class="dot dark"></span>
+                                        <span class="dot brown"></span>
+                                    </div>
+                                    <button class="buy-btn outline">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="arrow next-arrow" id="nextBtn">&#10230;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Ваш кошик</h3>
+            <button onclick="toggleCart()" class="close-cart">×</button>
+        </div>
+        <div id="cart-items"></div>
+        <div class="cart-total">
+            <span>Разом:</span>
+            <span id="total-price">$0</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
